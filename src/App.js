@@ -4,6 +4,7 @@ import { Inicio } from "./components/Inicio";
 import { ArticulosFamilias } from "./components/ArticulosFamilias";
 import { Menu } from "./components/Menu";
 import { Footer } from "./components/Footer";
+import { Articulos } from "./components/articulos/Articulos";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
             <Routes>
               <Route path="/inicio" element={<Inicio />} />
               <Route path="/articulosfamilias" element={<ArticulosFamilias />} />
+              <Route path="/articulos" element={<Articulos/>} />
               <Route path="*" element={<Navigate to="/Inicio" replace />} />
             </Routes>
         </div>
