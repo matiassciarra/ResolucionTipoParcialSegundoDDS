@@ -5,7 +5,9 @@ import ArticulosListado from "./ArticulosListado";
 import ArticulosRegistro from "./ArticulosRegistro";
 import { articulosService } from "../../services/articulos.service";
 import { articulosfamiliasService } from "../../services/articulosFamilias.service";
-//import { articulosFamiliasMockService as articulosfamiliasService } from "../../services/articulosFamilias-mock-service";
+//import { articulosFamiliasMockService as articulosfamiliasService } from "../../services/articulosFamilias-mock.service";
+import modalDialogService from "../../services/modalDialog.service";
+
 
 
 function Articulos() {
@@ -46,8 +48,9 @@ function Articulos() {
     else {
       _pagina = Pagina;
     }
-
+    modalDialogService.BloquearPantalla(true);
     const data = await articulosService.Buscar(Nombre, Activo, _pagina);
+    modalDialogService.BloquearPantalla(false);
     setItems(data.Items);
     setRegistrosTotal(data.RegistrosTotal);
 
@@ -71,7 +74,8 @@ function Articulos() {
   }
   function Modificar(item) {
     if (!item.Activo) {
-      alert("No puede modificarse un registro Inactivo.");
+      //alert("No puede modificarse un registro Inactivo.");
+      modalDialogService.Alert("No puede modificarse un registro Inactivo.");
       return;
     }
     BuscarPorId(item, "M"); // paso la accionABMC pq es asincrono la busqueda y luego de ejecutarse quiero cambiar el estado accionABMC
