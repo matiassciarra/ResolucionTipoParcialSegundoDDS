@@ -1,7 +1,8 @@
 import {config} from "../config";
 import httpService from "./http.service";
-const urlServidor = "https://labsys.frc.utn.edu.ar/dds-express"
-const urlResourceArticulos = urlServidor + "/api/articulos";
+
+const urlServidor = config.urlServidor;
+const urlResourceArticulos = urlServidor + "/api/articulosJWT";
 
 
 

@@ -16,15 +16,12 @@ function ArticulosJWT() {
 
 
   async function BuscarArticulosJWT() {
-    // try {
-       
+     try {
       let data = await articulosJWTService.Buscar();
       setArticulos(data);
-    // } catch (error) {
-    //   setTimeout(() => {
-    //     alert(error.message);
-    //   }, 0);
-    // }
+    } catch (error) {
+      console.log("error al buscar datos en el servidor!")
+    }
   }
 
 
