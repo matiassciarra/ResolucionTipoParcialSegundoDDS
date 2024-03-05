@@ -4,7 +4,7 @@ import ArticulosBuscar from "./ArticulosBuscar";
 import ArticulosListado from "./ArticulosListado";
 import ArticulosRegistro from "./ArticulosRegistro";
 import { articulosService } from "../../services/articulos.service";
-import { articulosfamiliasService } from "../../services/articulosFamilias.service";
+import { articulosFamiliasService } from "../../services/articulosFamilias.service";
 //import { articulosFamiliasMockService as articulosfamiliasService } from "../../services/articulosFamilias-mock.service";
 import modalDialogService from "../../services/modalDialog.service";
 
@@ -34,7 +34,7 @@ function Articulos() {
   // cargar al "montar" el componente, solo la primera vez (por la dependencia [])
   useEffect(() => {
     async function BuscarArticulosFamilas() {
-      let data = await articulosfamiliasService.Buscar();
+      let data = await articulosFamiliasService.Buscar();
       setArticulosFamilias(data);
     }
     BuscarArticulosFamilas();
@@ -93,23 +93,27 @@ function Articulos() {
         FechaAlta: moment(new Date()).format("YYYY-MM-DD"),
         Activo: true,
       });
-    alert("preparando el Alta...");
+    //modalDialogService.Alert("preparando el Alta...");
   }
 
   function Imprimir() {
-    alert("En desarrollo...");
+    modalDialogService.Alert("En desarrollo...");
   }
 
   async function ActivarDesactivar(item) {
-    const resp = window.confirm(
-      "Está seguro que quiere " +
+    modalDialogService.Confirm(
+      "Esta seguro que quiere " +
         (item.Activo ? "desactivar" : "activar") +
-        " el registro?"
+        " el registro?",
+      undefined,
+      undefined,
+      undefined,
+      async () => {
+        await articulosService.ActivarDesactivar(item);
+        await Buscar();
+      }
     );
-    if (resp) {
-      await articulosService.ActivarDesactivar(item);
-      await Buscar();
-    }
+
   }
   
   
@@ -122,19 +126,19 @@ function Articulos() {
     }
     catch (error)
     {
-      alert(error?.response?.data?.message ?? error.toString())
+      modalDialogService.Alert(error?.response?.data?.message ?? error.toString())
       return;
     }
     await Buscar();
     Volver();
   
-    setTimeout(() => {
-      alert(
+    //setTimeout(() => {
+      modalDialogService.Alert(
         "Registro " +
           (AccionABMC === "A" ? "agregado" : "modificado") +
           " correctamente."
       );
-    }, 0);
+    //}, 0);
   }
   
 

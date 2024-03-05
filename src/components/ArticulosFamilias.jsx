@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import { articulosFamiliasMockService } from '../services/articulosFamilias-mock.service';
+//import { articulosFamiliasMockService } from '../services/articulosFamilias-mock.service';
+import {articulosFamiliasService } from '../services/articulosFamilias.service';
 function ArticulosFamilias() {
   const tituloPagina = 'ArticulosFamilias';
   const [articulosFamilias, setArticulosFamilias] = useState(null);
@@ -8,7 +9,7 @@ function ArticulosFamilias() {
     BuscarArticulosFamilas();
   }, []);
   async function BuscarArticulosFamilas() {
-    let data = await articulosFamiliasMockService.Buscar();
+    let data = await articulosFamiliasService.Buscar();
     setArticulosFamilias(data);
   };
   return (

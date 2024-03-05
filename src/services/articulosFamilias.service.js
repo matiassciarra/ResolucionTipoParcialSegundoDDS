@@ -8,6 +8,6 @@ async function Buscar() {
   const resp = await axios.get(urlResource);
   return resp.data;
 }
-export const articulosfamiliasService = {
+export const articulosFamiliasService = {
   Buscar
 };
