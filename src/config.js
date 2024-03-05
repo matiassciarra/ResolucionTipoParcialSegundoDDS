@@ -8,7 +8,7 @@ const urlServidor = "https://dds-backend.azurewebsites.net"
 
 const urlResourceArticulos = urlServidor + "/api/articulos";
 const urlResourceArticulosFamilias = urlServidor + "/api/articulosfamilias";
-const urlResourceArticulosJWT = urlServidor + "/api/jwt/articulos";
+const urlResourceArticulosJWT = urlServidor + "/api/articulosjwt";
 
 export const config = {
     urlServidor,

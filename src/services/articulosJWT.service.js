@@ -1,13 +1,12 @@
 import {config} from "../config";
 import httpService from "./http.service";
 
-const urlServidor = config.urlServidor;
-const urlResourceArticulos = urlServidor + "/api/articulosJWT";
+const urlResource = config.urlResourceArticulosJWT
 
 
 
 
-const urlResource = urlResourceArticulos;
+
 
 
 async function Buscar(Nombre, Activo, Pagina) {
