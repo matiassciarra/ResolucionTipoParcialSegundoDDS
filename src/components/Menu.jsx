@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import AuthService from "../services/auth.service";
 
 
@@ -55,6 +55,11 @@ function Menu() {
             <li className="nav-item">
               <NavLink className="nav-link" to="/articulos">
                 Articulos
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/empleados">
+                Empleados
               </NavLink>
             </li>
             <li className="nav-item">
